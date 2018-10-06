@@ -48,10 +48,6 @@ public class UserController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/here")
-	public String recruitdemand1(final HttpServletRequest request, final HttpServletResponse response) {
-		
-		return "index";
-	}
+	
 
 }

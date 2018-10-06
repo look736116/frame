@@ -1,0 +1,11 @@
+77777714:59:42.860 INFO  com.my.test.TestLog 11 main - aaaa
+14:59:42.873 INFO  com.my.test.TestLog 12 main - qqq
+14:59:42.875 INFO  com.my.test.TestLog 13 main - qqqqqqqqqq
+14:59:42.878 INFO  com.my.test.LogA 12 outLog - I am LogA!
+14:59:42.880 INFO  com.my.test.LogB 12 outLog - I am LogB!
+888815:01:14.752 INFO  com.my.test.TestLog 11 main - aaaa
+15:01:14.763 INFO  com.my.test.TestLog 12 main - qqq哈哈
+15:01:14.764 INFO  com.my.test.TestLog 13 main - qqqqqqqqqq
+15:01:14.767 INFO  com.my.test.LogA 12 outLog - I am LogA!
+15:01:14.768 INFO  com.my.test.LogB 12 outLog - I am LogB!
+8888

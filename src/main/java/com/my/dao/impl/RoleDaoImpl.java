@@ -4,11 +4,18 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Example;
+import org.hibernate.criterion.LogicalExpression;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,26 +53,44 @@ public class RoleDaoImpl implements RoleDao {
 	@Override
 	public List<Role> getAllRoles() {
 		// TODO Auto-generated method stub
-		List<Role> roles = null;
 		
-		String sql = "SELECT * FROM tbl_role ";
-		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql);
-		roles = query.list();		
+		List<Role> roles = null;		
+		Session session =sessionFactory.getCurrentSession();
+		
+		
+		Criteria criteria = session.createCriteria(Role.class);		
+		Criterion serverName = Restrictions.eq("roleServer", "一梦十年");
+		Criterion userOrder = Restrictions.eq("roleOrder", 1);
+		Criterion inCriterion = Restrictions.in("roleSect", new Object[]{"天山","星宿"});
+		LogicalExpression andExp = Restrictions.and(serverName, userOrder);
+		criteria.add(andExp);
+		criteria.add(inCriterion);
+		roles = criteria.list();
+		
+		
 		return roles;
 	}
 
 /**
  * @author look
  * @param roleId
- * @return Role
- * 2018年9月21日 10:26:45
  */
 	@Override
 	public Role getRoleById(String roleId) {
 		// TODO Auto-generated method stub
 		Role role = null;
-		role = (Role)sessionFactory.getCurrentSession().load(Role.class, "33");
-		return role;
+		Session session = sessionFactory.getCurrentSession();
+		
+		Role demoRole = new Role();
+		demoRole.setRoleSect("星宿");
+		
+		Example example = Example.create(demoRole).excludeZeroes()		;
+		Criteria criteria = session.createCriteria(Role.class);
+		
+		List<Role> roles =criteria.add(example).list();
+		
+		return roles.get(0);
+	
 	}
 
 }
