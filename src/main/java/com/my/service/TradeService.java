@@ -17,5 +17,9 @@ public interface TradeService {
 		
 		//get pages num		
 		public int getPagesNum(int maxResults);
+		
+		//get pages num  by serverName,tradeTime and tradeMoney
+		public int getPagesNumByCondition(String tradeServer,String tradeTime,String tradeMoney,int maxResults);
+
 
 }

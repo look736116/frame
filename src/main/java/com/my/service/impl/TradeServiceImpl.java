@@ -49,4 +49,16 @@ public class TradeServiceImpl implements TradeService {
 		}
 	}
 
+	@Override
+	public int getPagesNumByCondition(String tradeServer, String tradeTime, String tradeMoney, int maxResults) {
+		// TODO Auto-generated method stub
+		int recordsNum = tradeDao.getRecordsNumByCondition(tradeServer, tradeTime, tradeMoney);
+		
+		if(recordsNum % maxResults == 0){
+			return recordsNum / maxResults;
+		}else{
+			return recordsNum / maxResults + 1;
+		}		
+	}
+
 }

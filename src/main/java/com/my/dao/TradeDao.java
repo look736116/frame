@@ -13,11 +13,14 @@ public interface TradeDao {
 	public List<Trade> getTradesByCondition(String tradeServer,String tradeTime,String tradeMoney,int firstResult,int maxResults);
 	
 	//add new trade info into DB
-	public int saveTrade(Trade trade);
+	public int saveTrade(Trade trade);	
 	
-	
-	//get record num
+	//get records num
 	public int getRocordsNum();
+	
+	//get records num  by serverName,tradeTime and tradeMoney
+	public int getRecordsNumByCondition(String tradeServer,String tradeTime,String tradeMoney);
+
 	
 
 }

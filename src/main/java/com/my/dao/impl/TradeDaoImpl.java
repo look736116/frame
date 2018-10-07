@@ -80,6 +80,27 @@ public class TradeDaoImpl implements TradeDao {
 		
 		return Integer.parseInt(criteria.uniqueResult().toString());
 	}
+
+	@Override
+	public int getRecordsNumByCondition(String tradeServer, String tradeTime, String tradeMoney) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria =session.createCriteria(Trade.class);
+		
+		if(!"全部区服".equals(tradeServer)){
+			criteria.add(Restrictions.eq("tradeServer", tradeServer));
+		}
+		if(!"0".equals(tradeTime)){
+			criteria.add(Restrictions.like("tradeTime", "%" + tradeTime + "%"));
+		}
+		
+		if(!"0".equals(tradeMoney)){
+			criteria.add(Restrictions.eq("tradeMoney",Integer.parseInt(tradeMoney)));
+		}
+		
+		criteria.setProjection(Projections.rowCount());
+		return Integer.parseInt(criteria.uniqueResult().toString());
+	}
 	
 
 }

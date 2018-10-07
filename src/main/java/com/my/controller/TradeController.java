@@ -51,37 +51,37 @@ public class TradeController {
 	// to save trade info page
 	@RequestMapping(value = "/saveTradeInfo")
 	public String saveTrade(Trade trade) {
-		
+
 		logger.info("Save trade to DB: " + trade.toString());
-		//save trade
+		// save trade
 		SimpleDateFormat sdf = new SimpleDateFormat("YYYY年MM月dd日 HH:mm:ss");
 		trade.setTradeTime(sdf.format(new Date()).toString());
 		trade.setTradeComment("");
-		tradeService.saveTrade(trade);	
+		tradeService.saveTrade(trade);
 
 		return "trade/tradeInfo";
-	}		
-				// query trade list by condition
-				@RequestMapping(value = "/queryTradeList")
-				@ResponseBody
-				public Map<String,Object> queryTradeList(final HttpServletRequest request, final HttpServletResponse response) {
-					
-					logger.info("query trade list by conditon!");
-					
-					List<Trade> trades = null;
-					String tradeServer = request.getParameter("tradeServer");
-					String tradeTime = request.getParameter("tradeTime");
-					String tradeMoney = request.getParameter("tradeMoney");
-					int firstResult =Integer.parseInt(request.getParameter("firstResult"));
-					int maxResults = Integer.parseInt(request.getParameter("maxResults"));
-					trades = tradeService.getTradesByCondition(tradeServer, tradeTime, tradeMoney, firstResult, maxResults);
-					int pagesNum = tradeService.getPagesNum(maxResults);
-					
-					Map<String,Object> results = new HashMap<String,Object>();
-					results.put("trades", trades);
-					results.put("pagesNum",pagesNum);
-					return results;
-				}
-	
+	}
+
+	// query trade list by condition
+	@RequestMapping(value = "/queryTradeList")
+	@ResponseBody
+	public Map<String, Object> queryTradeList(final HttpServletRequest request, final HttpServletResponse response) {
+
+		logger.info("query trade list by conditon!");
+
+		List<Trade> trades = null;
+		String tradeServer = request.getParameter("tradeServer");
+		String tradeTime = request.getParameter("tradeTime");
+		String tradeMoney = request.getParameter("tradeMoney");
+		int firstResult = Integer.parseInt(request.getParameter("firstResult"));
+		int maxResults = Integer.parseInt(request.getParameter("maxResults"));
+		trades = tradeService.getTradesByCondition(tradeServer, tradeTime, tradeMoney, firstResult, maxResults);
+		int pagesNum =tradeService.getPagesNumByCondition(tradeServer, tradeTime, tradeMoney, maxResults);
+
+		Map<String, Object> results = new HashMap<String, Object>();
+		results.put("trades", trades);
+		results.put("pagesNum", pagesNum);
+		return results;
+	}
 
 }
