@@ -165,6 +165,14 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
+		
+		<!-- springmvc batch -->
+		<dependency>
+        	<groupId>org.springframework.batch</groupId>
+        	<artifactId>spring-batch-core</artifactId>
+        	<version>2.1.8.RELEASE</version>
+    	</dependency>
+
 
 	</dependencies>
 </project>
