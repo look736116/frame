@@ -13,10 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonAnyFormatVisitor;
+import com.my.base.Error;
 import com.my.momel.Trade;
 import com.my.service.TradeService;
 
@@ -83,5 +88,22 @@ public class TradeController {
 		results.put("pagesNum", pagesNum);
 		return results;
 	}
+	
+
+		@RequestMapping(value = "/restClinet")
+		@ResponseBody
+		public Map<String, Object> restClinet(@RequestBody Trade trade,@RequestHeader("userType") String  userType) {
+
+			logger.info("TestRestClient"  + trade);
+			// save trade
+			Map<String, Object> results = new HashMap<String, Object>();
+			results.put(Error.S001.getErrorCode(),Error.S001.getErrorMessage());
+			results.put("userType", userType);
+			results.put("trades",this.tradeService.getAllTrades());	
+			
+			
+			return results;
+		}
+
 
 }

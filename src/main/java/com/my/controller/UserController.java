@@ -48,6 +48,13 @@ public class UserController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/test.do")
+	public String doFilter(final HttpServletRequest request, final HttpServletResponse response) {
+		System.err.println("=======");
+		
+		return "index";
+	}
+	
 	
 
 }

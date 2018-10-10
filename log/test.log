@@ -8,4 +8,5 @@
 15:01:14.764 INFO  com.my.test.TestLog 13 main - qqqqqqqqqq
 15:01:14.767 INFO  com.my.test.LogA 12 outLog - I am LogA!
 15:01:14.768 INFO  com.my.test.LogB 12 outLog - I am LogB!
+888821:26:43.444 INFO  com.my.test.TestRole 19 testGetRoles - =====111
 8888
