@@ -106,7 +106,7 @@ $(document).ready(function() {
 					tr.appendTo(tbody);
 					
 					var td0 = $("<td>"
-							+ ((firstResult++)+1)
+							+ (++firstResult)
 							+ "</td>");
 					var td1 = $("<td>"
 							+ results.trades[i].tradeServer

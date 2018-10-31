@@ -86,6 +86,7 @@ public class TradeController {
 		Map<String, Object> results = new HashMap<String, Object>();
 		results.put("trades", trades);
 		results.put("pagesNum", pagesNum);
+		
 		return results;
 	}
 	

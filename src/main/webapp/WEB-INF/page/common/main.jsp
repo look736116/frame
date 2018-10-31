@@ -31,8 +31,8 @@
 	<div class="text-center" style="margin:100px 0px">
 	   <div class="btn-group btn-group-lg">
 	  	<button type="button" class="btn btn-primary " id ="tradeInfo">交易记录</button>
+	    <button type="button" class="btn btn-primary ">监控查询</button>
 	  	<button type="button" class="btn btn-primary ">角色信息</button>
-	  	<button type="button" class="btn btn-primary ">资料查询</button>
 	  </div>
    </div>
 	

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.my.momel.Role;
 
-public interface RoleServer{
+public interface RoleService{
 		//add role
 		public Role addRole(Role role);
 		

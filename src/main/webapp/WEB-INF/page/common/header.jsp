@@ -33,8 +33,16 @@
                <li><a href="#">修改交易</a></li>               
             </ul>            
            </li>
+           <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-book"> 监控查询</span>
+            </a>
+            <ul class="dropdown-menu">
+               <li><a href="<%=path%>/weight/toWeightDetails">监控记录</a></li>
+               <li><a href="<%=path%>/weight/toWeightInfo">添加记录</a></li>
+               <li><a href="#">修改记录</a></li>               
+            </ul>            
+           </li>
             <li><a href="#shop"><span class="glyphicon glyphicon-user"> 角色管理</span></a></li>
-            <li><a href="#support"><span class="glyphicon glyphicon-book"> 资料管理</span></a></li>
           <li><a href="#support"><span class="glyphicon glyphicon-wrench"> 使用工具</span></a></li>
           </ul>
         </div><!-- /.nav-collapse -->

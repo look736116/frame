@@ -20,7 +20,8 @@ public interface TradeDao {
 	
 	//get records num  by serverName,tradeTime and tradeMoney
 	public int getRecordsNumByCondition(String tradeServer,String tradeTime,String tradeMoney);
-
 	
+	//test procedure
+	public String callProcedure();
 
 }

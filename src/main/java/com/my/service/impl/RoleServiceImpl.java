@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 import com.my.dao.RoleDao;
 import com.my.dao.impl.RoleDaoImpl;
 import com.my.momel.Role;
-import com.my.service.RoleServer;
+import com.my.service.RoleService;
 
 @Service("roleService")
-public class RoleServerImpl implements RoleServer {
+public class RoleServiceImpl implements RoleService {
 	
 	@Autowired
 	@Resource(name ="roleDao")

@@ -14,14 +14,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.my.momel.Role;
-import com.my.service.RoleServer;
+import com.my.service.RoleService;
 
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {	
 	
 	@Resource(name="roleService")
-	private RoleServer roleService;
+	private RoleService roleService;
 	
 	private static Logger logger = LogManager.getLogger(UserController.class);
 	

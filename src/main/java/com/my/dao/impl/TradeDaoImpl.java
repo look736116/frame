@@ -1,18 +1,23 @@
 package com.my.dao.impl;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Types;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.hibernate.Criteria;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.orm.hibernate4.SessionFactoryUtils;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.my.dao.TradeDao;
 import com.my.momel.Trade;
@@ -100,6 +105,41 @@ public class TradeDaoImpl implements TradeDao {
 		
 		criteria.setProjection(Projections.rowCount());
 		return Integer.parseInt(criteria.uniqueResult().toString());
+	}
+	
+	@Override
+	@Transactional
+	public String callProcedure(){				
+	
+		String sql = "{Call PRO_TEST(?,?,?,?)}";
+		Connection con = null;
+		CallableStatement cs =null;		
+		String flag = "0";
+		int num = 0;
+		
+		try {
+			con = SessionFactoryUtils.getDataSource(sessionFactory).getConnection();
+			cs = con.prepareCall(sql);
+			cs.setInt(1, 1);
+			cs.setString(2,"55");			
+			cs.registerOutParameter(3, Types.VARCHAR);//注册输出参数
+			cs.registerOutParameter(4, Types.INTEGER);//注册输出参数
+			
+			cs.execute();
+			if (!cs.getMoreResults()) {//此行判断是否还有更多的结果集,如果没有,接下来会处理output返回参数了 
+				flag = cs.getString(3);
+				num = cs.getInt(4);
+			}			
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	
+		return flag + num;
+		
+		
+		
 	}
 	
 
